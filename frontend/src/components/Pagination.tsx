@@ -24,13 +24,14 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
   }
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-8">
+    <div className="flex items-center justify-center gap-2 mt-12 p-4 bg-white/40 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg w-fit mx-auto">
       <Button
         variant="outline"
         size="sm"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         aria-label="Previous page"
+        className="disabled:opacity-30"
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
@@ -44,7 +45,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
           >
             1
           </Button>
-          {startPage > 2 && <span className="px-2">...</span>}
+          {startPage > 2 && <span className="px-2 text-gray-400">...</span>}
         </>
       )}
 
@@ -54,6 +55,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
           variant={currentPage === page ? 'default' : 'outline'}
           size="sm"
           onClick={() => onPageChange(page)}
+          className={currentPage === page ? 'shadow-lg' : ''}
         >
           {page}
         </Button>
@@ -61,7 +63,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
 
       {endPage < totalPages && (
         <>
-          {endPage < totalPages - 1 && <span className="px-2">...</span>}
+          {endPage < totalPages - 1 && <span className="px-2 text-gray-400">...</span>}
           <Button
             variant="outline"
             size="sm"
@@ -78,6 +80,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         aria-label="Next page"
+        className="disabled:opacity-30"
       >
         <ChevronRight className="h-4 w-4" />
       </Button>

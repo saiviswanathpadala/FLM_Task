@@ -9,17 +9,21 @@ interface ErrorStateProps {
 
 export default function ErrorState({ message = 'Failed to load companies', onRetry }: ErrorStateProps) {
   return (
-    <Card className="border-destructive">
+    <Card className="bg-red-50/60 backdrop-blur-md border-red-200 shadow-lg">
       <CardHeader>
-        <div className="flex items-center gap-2">
-          <AlertCircle className="h-5 w-5 text-destructive" />
-          <CardTitle>Error</CardTitle>
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-red-100 rounded-lg">
+            <AlertCircle className="h-6 w-6 text-red-600" />
+          </div>
+          <div>
+            <CardTitle className="text-red-900">Error</CardTitle>
+            <CardDescription className="text-red-700">{message}</CardDescription>
+          </div>
         </div>
-        <CardDescription>{message}</CardDescription>
       </CardHeader>
       {onRetry && (
         <CardContent>
-          <Button onClick={onRetry} variant="outline" className="flex items-center gap-2">
+          <Button onClick={onRetry} variant="outline" className="flex items-center gap-2 border-red-300 hover:bg-red-50">
             <RefreshCw className="h-4 w-4" />
             Retry
           </Button>
