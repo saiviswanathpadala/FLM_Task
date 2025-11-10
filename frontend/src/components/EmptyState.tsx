@@ -1,5 +1,5 @@
-import { Building2, Search } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/Card';
+import { Search } from 'lucide-react';
+import { Card, CardDescription, CardHeader, CardTitle } from './ui/Card';
 
 export default function EmptyState() {
   return (
